@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>UAP API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+  
+</head>
+<style>
+  body {
+  
+      background-image: url('/static/img2.jpg'); /* Ganti dengan path yang benar ke gambar Anda */
+      background-size: cover; /* Menutupi seluruh elemen dengan gambar */
+      background-repeat: no-repeat; /* Mencegah pengulangan gambar */
+      font-family: 'Arimo', sans-serif; /* Menggunakan font Arimo */
+      color: white; /* Warna teks */
+     
+      justify-content: center;
+      align-items: center;
+  }
+  header {
+            background-color: navy;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        form {
+            width: 300px; /* Adjust the width as needed */
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: orange;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .prediction {
+            width: 250px; /* Adjust the width as needed */
+            padding: 20px;
+            text-align: center;
+        }
+        #frame1 {
+            flex: 1;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        #frame2 {
+            flex: 1;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+
+</style>
+
+<body>
+  <header>
+    <h1>INCOME PREDICTION</h1>
+    <p>melakukan prediksi income</p>
+</header>
+
+ <div id="frame1">
+	<h2>Masukan Fitur yang diinginkan</h2>
+
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+    	<input type="text" name="age" placeholder="age" required="required" />
+        <input type="text" name="workclass" placeholder="workclass" required="required" />
+        <input type="text" name="martial-status" placeholder="martial-status" required="required" />
+		<input type="text" name="occuption" placeholder="occuption" required="required" />
+		
+
+
+		<input type="text" name="gender" placeholder="gender" required="required" />
+		<input type="text" name="capital-gain " placeholder="capital-gain" required="required" />
+    <input type="text" name="capital-loss" placeholder="capital-loss" required="required" />
+		<input type="text" name="hours-per-week" placeholder="hours-per-week" required="required" />
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+  </div>
+  
+    <div id="frame2">
+      <div class="prediction">
+          {{ prediction_text }}
+      </div>
+  </div>
+
+
+</body>
+</html>
